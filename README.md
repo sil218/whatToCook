@@ -51,3 +51,26 @@ Upload and extract to Symfony 2 folder
 Using phpunit, to run test, enter command:
 
     phpunit -c app src/Sil/WhatToCookBundle/
+    
+5) Demo Fridge (csv file) and recipes (json file)
+-------------------------------------------------
+
+csv file
+---------
+    Format: item, amount, unit, use-by
+    
+    Where:
+        Item (string) = the name of the ingredient – e.g. egg)
+        Amount (int) = the amount
+        Unit (enum) = the unit of measure, values of (for individual items; eggs, bananas etc), grams, ml (milliliters)  and slices
+        Use-By (date) = the use by date of the ingredient (dd/mm/yy)
+
+    e.g.
+    bread,10,slices,25/12/2014
+    cheese,10,slices,25/12/2014
+    butter,250,grams,25/12/2014
+    peanut butter,250,grams,2/12/2014
+    mixed salad,150,grams,26/12/2013:
+
+
+    phpunit -c app src/Sil/WhatToCookBundle/
