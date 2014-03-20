@@ -1,0 +1,7 @@
+parameters:
+#    sil_what_to_cook.example.class: Sil\WhatToCookBundle\Example
+
+services:
+#    sil_what_to_cook.example:
+#        class: %sil_what_to_cook.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

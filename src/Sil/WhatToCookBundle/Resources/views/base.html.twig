@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href="{{ asset('bundles/silwhattocook/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Days+One' rel='stylesheet' type='text/css'>
+        <!-- Dropzone -->
+        {% stylesheets 'bundles/silwhattocook/css/dropzone.css' 'bundles/silwhattocook/css/basic.css' output='css/styles.css' filter='cssrewrite' %}
+            <link type="text/css" rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="site-wrapper">
+
+      <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+          <div class="inner cover">
+            {% block body %}{% endblock %}
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+    
+
+
+    {% block javascripts %}
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        {% javascripts '@SilWhatToCookBundle/Resources/public/js/bootstrap.min.js' '@SilWhatToCookBundle/Resources/public/js/dropzone.js' %}
+            <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        {% block pageLevelJavascript %}
+        {% endblock %}
+        
+    {% endblock %}
+  </body>
+</html>

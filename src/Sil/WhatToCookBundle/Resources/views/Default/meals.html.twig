@@ -1,0 +1,28 @@
+{% extends 'SilWhatToCookBundle::base.html.twig' %}
+
+{% block body %}
+
+<h1 class="cover-heading">So...You can cook:</h1>
+<div class="row">
+	{% if cookAble is empty %}
+	    <p>Not enough ingredients to cook anything :(</p>
+	{% else %}
+		{% for recipe in cookAble  %}
+			<div class="recipe">
+				<h4>{{ recipe.name | upper  }}</h4>
+				<table class="table">
+					{% for item in recipe.ingredients %}
+					<tr>
+						<td>{{ item.amount}} {{ item.unit }}</td>
+						<td>{{ item.item }}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<br/>
+	<p class="try-again"><a href="{{ path('sil_what_to_cook_homepage') }}"> Try Again </a>
+</div>
+
+{% endblock %}

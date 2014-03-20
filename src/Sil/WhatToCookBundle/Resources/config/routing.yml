@@ -1,0 +1,12 @@
+sil_what_to_cook_homepage:
+    pattern:  /whattocook
+    defaults: { _controller: SilWhatToCookBundle:Default:index }
+sil_what_to_cook_upload_fridge:
+    pattern:  /uploadFridge
+    defaults: { _controller: SilWhatToCookBundle:Default:uploadFridge }
+sil_what_to_cook_upload_recipes:
+    pattern:  /uploadRecipes
+    defaults: { _controller: SilWhatToCookBundle:Default:uploadRecipes }
+sil_what_to_cook_let_cook:
+    pattern:  /letCook
+    defaults: { _controller: SilWhatToCookBundle:Default:letCook }

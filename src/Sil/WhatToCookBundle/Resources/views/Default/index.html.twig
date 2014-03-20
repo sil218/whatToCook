@@ -1,0 +1,103 @@
+{% extends 'SilWhatToCookBundle::base.html.twig' %}
+
+{% block body %}
+
+<h1 class="cover-heading">What to cook?</h1>
+<div class="row">
+	<!-- Fridge -->
+  	<div class="col-md-6">
+  		<form action="{{ path('sil_what_to_cook_upload_fridge') }}" id="my-fridge" class="dropzone fridge"></form>
+  		<p class="bg-danger" id="my-fridge-response"></p>
+  	</div>
+  	<!-- Recipes -->
+  	<div class="col-md-6">
+  		<form action="{{ path('sil_what_to_cook_upload_recipes') }}" id="my-recipes" class="dropzone recipes"></form>
+  		<p class="bg-danger" id="my-recipes-response"></p>
+  	</div>
+</div>
+
+<div class="row">
+	<form action="{{ path('sil_what_to_cook_let_cook') }}">
+	  	<button class="submit-toCook" type="submit"></button>
+      <p class="try-again"> Or <a href="{{ path('sil_what_to_cook_homepage') }}"> Try Again </a>
+	</form>
+</div>
+
+{% endblock %}
+
+{% block pageLevelJavascript %}
+
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+            // Disable step 3 by default
+            $('.submit-toCook').attr('disabled','disabled');
+                var fridge = false;
+                var recipes = false;
+
+            // Check if all files are uploaded and enable step 3
+            var readyToCook = function(){
+                if(fridge && recipes)
+                {
+                     $('.submit-toCook').removeAttr('disabled');
+                }
+            };
+            
+            Dropzone.autoDiscover = false;
+            var myFridge = new Dropzone("form#my-fridge", {
+                    maxFiles: 1,
+                    init: function() {
+                        this.on("error", function(file, message) {
+                                var response = message;
+                                $("#my-fridge-response").html(response['message']);
+                                this.removeFile(file);});
+                        this.on("success", function(file, message) {
+                                var response = message;
+                                $("#my-fridge-response").hide();
+                                fridge = true;
+                                readyToCook();
+                        });
+                        this.on("maxfilesexceeded", function(file) { this.removeFile(file); });
+                        this.on("addedfile", function(file) {
+                            var fileExtension = file.name.split('.')[file.name.split('.').length - 1];
+                            if (fileExtension != "csv") {
+                                // You could of course generate another image yourself here,
+                                // and set it as a data url.
+                                this.removeFile(file);
+                                console.log(fileExtension);
+                                $("#my-fridge-response").html("please upload <b>.csv</b> file only");
+                            }
+                        });
+                    }
+              });
+            var myRecipes = new Dropzone("form#my-recipes", {
+                    maxFiles: 1,
+                    init: function() {
+                        this.on("error", function(file, message) {
+                                var response = message;
+                                $("#my-recipes-response").html(response['message']);
+                                this.removeFile(file);});
+                        this.on("success", function(file, message) {
+                                var response = message;
+                                $("#my-recipes-response").hide();
+                                recipes = true;
+                                readyToCook();
+                        });
+                        this.on("maxfilesexceeded", function(file) { this.removeFile(file); });
+                        this.on("addedfile", function(file) {
+                            var fileExtension = file.name.split('.')[file.name.split('.').length - 1];
+                            if (fileExtension != "json") {
+                                // You could of course generate another image yourself here,
+                                // and set it as a data url.
+                                this.removeFile(file);
+                                console.log(fileExtension);
+                                $("#my-recipes-response").html("please upload <b>.json</b> file only");
+                            }
+                        });
+                    }
+              });
+            
+
+        });
+        </script>
+{% endblock %}
