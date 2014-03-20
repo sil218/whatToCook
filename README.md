@@ -41,3 +41,13 @@ Upload and extract to Symfony 2 folder
       resource: "@SilWhatToCookBundle/Resources/config/routing.yml"
       prefix:   /;    
       bundles:        [ SilWhatToCookBundle ]
+
+* Dump assets
+    php app/console assetic:dump --env=prod --no-debug
+
+4) Unit Test
+-------------------------------------
+
+Using phpunit, to run test, enter command:
+
+    phpunit -c app src/Sil/WhatToCookBundle/
