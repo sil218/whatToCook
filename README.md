@@ -57,6 +57,10 @@ Using phpunit, to run test, enter command:
 
 csv file
 ---------
+
+    Demo file:
+    http://wtcdemo.phpfenix.biz/fridge.csv
+
     Format: item, amount, unit, use-by
     
     Where:
@@ -71,6 +75,38 @@ csv file
     butter,250,grams,25/12/2014
     peanut butter,250,grams,2/12/2014
     mixed salad,150,grams,26/12/2013:
+    
+json file
+---------
+
+    Demo file:
+    http://wtcdemo.phpfenix.biz/recipes.json
+
+    Array of recipes with format specified as below
+    name : String
+    ingredients[] 
+    item : String
+    amount : int
+    unit : enum
+
+    e.g.
+    [
+        {
+            "name": "grilled cheese on toast",
+            "ingredients": [
+                { "item":"bread", "amount":"2", "unit":"slices"},
+                { "item":"cheese", "amount":"2", "unit":"slices"}
+            ]
+        }
+        ,
+        {
+            "name": "salad sandwich",
+            "ingredients": [
+                { "item":"bread", "amount":"2", "unit":"slices"},
+                { "item":"mixed salad", "amount":"100", "unit":"grams"}
+            ]
+        }
+    ]
 
 
     phpunit -c app src/Sil/WhatToCookBundle/
