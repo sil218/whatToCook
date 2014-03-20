@@ -108,5 +108,5 @@ json file
         }
     ]
 
-
-    phpunit -c app src/Sil/WhatToCookBundle/
+Using the sample input above, the program should return "grilled cheese on toast".
+----------------------------------------------------------------------------------
