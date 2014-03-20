@@ -25,15 +25,18 @@ Download the zip file from Github:
 Upload and extract to Symfony 2 folder
 
 * Update app/AppKernel.php;
+
     $bundles = array(
             ...
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
-* Update Assetic Configuration in app/config/config.yml;    
+* Update Assetic Configuration in app/config/config.yml;
+
     bundles:        [ SilWhatToCookBundle ]
 
 * Update Routing in app/config/routing.yml;
+
     sil_what_to_cook:
       resource: "@SilWhatToCookBundle/Resources/config/routing.yml"
       prefix:   /;    
